@@ -1,0 +1,30 @@
+# Claude Code local settings
+.claude/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Logs & temp
+*.log
+*.tmp
+tmp/
+.cache/
+
+# Node (only if tooling is added later)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Source/original design files we don't want to publish
+# (uncomment if you keep working files in the repo)
+# *.psd
+# *.ai
+# *.xcf
+# design/

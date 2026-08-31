@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zero-jargon.github.io/sitemap.xml
