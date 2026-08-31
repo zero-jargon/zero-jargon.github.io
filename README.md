@@ -1,25 +1,27 @@
-# zero-jargon.github.io
+# 0j.fi
 
-Single-page site for **0J Consulting Oy**. Pure black, glitchy ANSI aesthetic,
-no menus, no navigation — one page.
+Single-page site for **0J Consulting Oy** — a Finnish cyber security consultancy
+(CTI, DFIR, malware analysis). Pure black, glitchy ANSI aesthetic, no menus,
+no navigation — one page.
 
-Hosted on GitHub Pages at <https://zero-jargon.github.io>, later moving to
-<https://0j.fi>.
+Served from GitHub Pages (repo `zero-jargon/zero-jargon.github.io`) on the
+custom domain **<https://0j.fi>**.
 
 ## Structure
 
 ```
 .
 ├── index.html                 # the page
+├── CNAME                       # custom domain (0j.fi) for GitHub Pages
 ├── favicon.ico                # multi-res favicon
-├── robots.txt / sitemap.xml   # crawler hints
+├── robots.txt / sitemap.xml   # crawler hints (point at https://0j.fi/)
 ├── .nojekyll                  # tell GitHub Pages to serve files as-is
 └── assets/
     ├── css/style.css
     └── images/
-        ├── h7-zerojargon.png              # ANSI hero art (640x400)
+        ├── h7-zerojargon.png                 # ANSI hero art (640x400)
         ├── h7-zerojargon_glitchy_square.jpg  # square logo (815x815, source)
-        ├── footer-logo.jpg                # optimized footer mark
+        ├── footer-logo.jpg                   # optimized footer mark
         ├── apple-touch-icon.png
         ├── favicon-32.png
         └── favicon-16.png
@@ -34,43 +36,44 @@ python3 -m http.server 8000
 # then open http://localhost:8000
 ```
 
-## Deploy to GitHub Pages
+## Deploy
 
-1. Commit and push to the `main` branch of the `zero-jargon/zero-jargon.github.io` repo:
+Changes go live by pushing to `main`:
 
-   ```bash
-   git add .
-   git commit -m "Publish 0J Consulting site"
-   git push origin main
-   ```
+```bash
+git add .
+git commit -m "Update site"
+git push origin main
+```
 
-2. In the repo on GitHub: **Settings → Pages**.
-   - **Source:** `Deploy from a branch`
-   - **Branch:** `main` / `root`
-   - Save.
+GitHub Pages rebuilds automatically (watch the **Actions** tab). Pages config:
+**Settings → Pages → Source: Deploy from a branch → `main` / root**.
 
-3. Because the repo is named `zero-jargon.github.io`, it publishes at the root:
-   <https://zero-jargon.github.io> (allow a minute or two for the first build).
+## Domain & DNS (live)
 
-## Custom domain (0j.fi) — later
+The site is on the custom domain `0j.fi`, configured via:
 
-When you're ready to move to `0j.fi`:
+- **`CNAME`** file in the repo root containing `0j.fi`.
+- **DNS** at the registrar:
+  - Apex `0j.fi` → four `A` records:
+    `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+    (plus matching `AAAA` records for IPv6, if used).
+  - `www.0j.fi` → `CNAME` to `zero-jargon.github.io`.
+- **Settings → Pages → Enforce HTTPS** enabled once the certificate is issued.
 
-1. Create a file named `CNAME` in the repo root containing a single line:
+GitHub 301-redirects `zero-jargon.github.io` → `0j.fi`, so the old URL keeps working.
 
-   ```
-   0j.fi
-   ```
+## SEO notes
 
-   (Or set it under **Settings → Pages → Custom domain**, which creates the file for you.)
+- All absolute URLs (canonical, Open Graph, Twitter card, JSON-LD) point at
+  `https://0j.fi/`. If the domain ever changes, update them in `index.html`,
+  `robots.txt`, and `sitemap.xml`.
+- Structured data (`ProfessionalService` JSON-LD) describes the company and
+  services; it deliberately contains **no email** to keep addresses out of the
+  raw HTML (emails are shown on-page in `name [at] 0j.fi` form for the same
+  reason).
+- After go-live: verify the domain in **Google Search Console** and submit
+  `sitemap.xml`.
 
-2. At your DNS provider, point the domain at GitHub Pages:
-   - **Apex `0j.fi`** — four `A` records:
-     `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-     (and the matching `AAAA` records if you want IPv6).
-   - **`www.0j.fi`** — a `CNAME` to `zero-jargon.github.io`.
-
-3. Back in **Settings → Pages**, tick **Enforce HTTPS** once the certificate is issued.
-
-> Note: all asset paths in `index.html` are root-absolute (`/assets/...`),
-> so they work identically on `zero-jargon.github.io` and `0j.fi`.
+> Note: all in-page asset paths are root-absolute (`/assets/...`), so they work
+> regardless of which domain serves the site.

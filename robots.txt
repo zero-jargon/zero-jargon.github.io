@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://zero-jargon.github.io/sitemap.xml
+Sitemap: https://0j.fi/sitemap.xml
