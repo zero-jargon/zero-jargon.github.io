@@ -1,0 +1,48 @@
+/* Services page extras — builds on style.css */
+.wrap.services { max-width: 860px; }
+
+.services .hero { max-width: 420px; }
+
+.intro {
+  margin: 0;
+  text-align: center;
+  color: var(--grey);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.services-list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1rem, 3vw, 1.75rem);
+}
+
+.services-list .box h2 { font-size: 0.85rem; margin-bottom: 0.8rem; }
+
+.services-list p {
+  margin: 0 0 0.8rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.services-list p:last-child { margin-bottom: 0; }
+
+.note {
+  border-left: 3px solid var(--magenta);
+  padding: 0.4rem 0 0.4rem 0.8rem;
+  color: var(--grey);
+}
+
+.links {
+  list-style: none;
+  margin: 0.4rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  word-break: break-word;
+}
+.links li::before { content: "> "; color: var(--cyan); }
+
+.cta { text-align: center; font-size: 0.9rem; color: var(--grey); margin: 0; }
