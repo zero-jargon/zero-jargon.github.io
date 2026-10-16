@@ -1,7 +1,8 @@
 # 0j.fi
 
 Single-page site for **0J Consulting Oy** — a Finnish cyber security consultancy
-(CTI, DFIR, malware analysis). Pure black, glitchy ANSI aesthetic, no menus,
+(penetration testing, vulnerability research & bug bounty, CTI, DFIR, malware
+analysis, training and speaking). Pure black, glitchy ANSI aesthetic, no menus,
 no navigation — one page.
 
 Served from GitHub Pages (repo `zero-jargon/zero-jargon.github.io`) on the
